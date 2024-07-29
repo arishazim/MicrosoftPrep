@@ -1,0 +1,63 @@
+//class Solution {
+//    public int solution(int A, int B, int C, int D) {
+//        // Create an array of the input digits
+//        int[] digits = {A, B, C, D};
+//
+//        // Set to store unique valid times
+//        java.util.Set<String> uniqueTimes = new java.util.HashSet<>();
+//
+//        // Generate all permutations of the digits
+//        generatePermutations(digits, 0, uniqueTimes);
+//
+//        // Return the count of unique valid times
+//        return uniqueTimes.size();
+//    }
+//
+//    // Helper method to generate all permutations of the digits
+//    private void generatePermutations(int[] digits, int start, java.util.Set<String> uniqueTimes) {
+//        if (start == digits.length) {
+//            // Check if the current permutation forms a valid time
+//            checkValidTime(digits, uniqueTimes);
+//            return;
+//        }
+//
+//        for (int i = start; i < digits.length; i++) {
+//            // Swap digits to create a new permutation
+//            swap(digits, start, i);
+//            generatePermutations(digits, start + 1, uniqueTimes);
+//            // Swap back to restore the original order
+//            swap(digits, start, i);
+//        }
+//    }
+//
+//    // Helper method to swap two elements in an array
+//    private void swap(int[] arr, int i, int j) {
+//        int temp = arr[i];
+//        arr[i] = arr[j];
+//        arr[j] = temp;
+//    }
+//
+//    // Helper method to check if a permutation forms a valid time
+//    private void checkValidTime(int[] digits, java.util.Set<String> uniqueTimes) {
+//        int hours = digits[0] * 10 + digits[1];
+//        int minutes = digits[2] * 10 + digits[3];
+//
+//        if (hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60) {
+//            // Format the time as a string with leading zeros
+//            String time = String.format("%02d:%02d", hours, minutes);
+//            uniqueTimes.add(time);
+//        }
+//    }
+//}
+//
+//(1, 8, 3, 2)
+//        (2, 3, 3, 2)
+//        (6, 2, 4, 7)
+//        (0, 0, 0, 0)
+//        (2, 4, 0, 0)
+//        (9, 9, 9, 9)
+//        (1, 2, 3, 4)
+//        (5, 5, 5, 5)
+//        (0, 1, 2, 3)
+//        (2, 3, 5, 9)
+//
