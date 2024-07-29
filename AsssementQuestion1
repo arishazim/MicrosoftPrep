@@ -1,0 +1,65 @@
+//class Solution {
+//    public int solution(String[] A, String S) {
+//        // Edge case: If A is null or empty, no recipes can be prepared
+//        if (A == null || A.length == 0) {
+//            return 0;
+//        }
+//
+//        // Edge case: If S is null or empty, no recipes can be prepared
+//        if (S == null || S.isEmpty()) {
+//            return 0;
+//        }
+//
+//        // Create a frequency map of available ingredients
+//        Map<Character, Integer> availableIngredients = new HashMap<>();
+//        for (char c : S.toCharArray()) {
+//            availableIngredients.put(c, availableIngredients.getOrDefault(c, 0) + 1);
+//        }
+//
+//        int count = 0;
+//
+//        // Check each recipe
+//        for (String recipe : A) {
+//            // Edge case: If the recipe is null or empty, we consider it as preparable
+//            if (recipe == null || recipe.isEmpty()) {
+//                count++;
+//                continue;
+//            }
+//
+//            // Check if we can prepare this recipe
+//            if (canPrepare(recipe, new HashMap<>(availableIngredients))) {
+//                count++;
+//            }
+//        }
+//
+//        return count;
+//    }
+//
+//    private boolean canPrepare(String recipe, Map<Character, Integer> ingredients) {
+//        for (char c : recipe.toCharArray()) {
+//            // Check if we have this ingredient and if we have enough of it
+//            if (!ingredients.containsKey(c) || ingredients.get(c) == 0) {
+//                return false;
+//            }
+//            // Use one unit of this ingredient
+//            ingredients.put(c, ingredients.get(c) - 1);
+//        }
+//        return true;
+//    }
+//}
+//
+//
+//
+//
+//(['toast', 'bread', 'breada', 'cheese'], 'abcdeeehrs')
+//        (['az', 'azz', 'zza', 'zzz', 'zzzz'], 'azzz')
+//        ([], 'abcdef')
+//        (['abc', 'def'], '')
+//        (['abc', '', 'def'], 'abcdef')
+//        (['a', 'b', 'c', 'd'], 'abcd')
+//        (['xyz', 'uvw'], 'abcd')
+//        (['aaa', 'bbb', 'ccc'], 'abc')
+//        (['long', 'recipe', 'with', 'many', 'ingredients'], 'abcdefghijklmnopqrstuvwxyz')
+//        (['a', 'aa', 'aaa', 'aaaa'], 'aaaaaa')
+//
+//
