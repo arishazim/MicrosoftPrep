@@ -1,0 +1,73 @@
+//original
+//class Solution {
+//    public int solution(int[] S) {
+//        int max_sum = 0;
+//        int current_sum = 0;
+//        boolean positive = false;
+//        int n = S.length;
+//        for (int i = 0; i < n; ++i) {
+//            int item = S[i];
+//            if (item < 0) {
+//                if (max_sum < current_sum) {
+//                    max_sum = current_sum;
+//                    current_sum = 0;
+//                }
+//            } else {
+//                positive = true;
+//                current_sum += item;
+//            }
+//        }
+//        if (current_sum > max_sum) {
+//            max_sum = current_sum;
+//        }
+//        if (positive) {
+//            return max_sum;
+//        }
+//        return -1;
+//    }
+//}
+////modofiued
+///*
+//Time complexity: O(n), where n is the length of the input array, as we iterate through the array once.
+//Space complexity: O(1), as we use only a constant amount of extra space regardless of the input size.
+// */
+//class Solution {
+//    public int solution(int[] S) {
+//        int max_sum = -1; // Change 1: Initialize max_sum to -1 Changed int max_sum = 0; to int max_sum = -1; This
+//        // allows us to differentiate between no non-negative slices and a maximum sum of 0. It ensures that we can handle
+//        // the case where the maximum sum of a non-negative slice is actually 0.
+//        int current_sum = 0;
+//        boolean positive = false;
+//        int n = S.length;
+//        for (int i = 0; i < n; ++i) {
+//            int item = S[i];
+//            if (item < 0) {
+//                if (max_sum < current_sum) {
+//                    max_sum = current_sum;
+//                }
+//                current_sum = 0; // Change 2: Move this line out of the if block
+//            } else {
+//                positive = true;
+//                current_sum += item;
+//                if (current_sum > max_sum) max_sum = current_sum; // Change 3: Update max_sum for each positive number
+//            }
+//        }
+//        if (current_sum > max_sum) {
+//            max_sum = current_sum;
+//        }
+//        if (positive) {
+//            return max_sum;
+//        }
+//        return -1;
+//    }
+//}
+//        [1, 2, -3, 4, 5, -6]
+//        [-1, -2, -3]
+//        [0, 0, 0]
+//        [1, 2, 3, 4, 5]
+//        [-1, 2, 3, -4, 5]
+//        [10, -5, 7, -3, 8, -2]
+//        [1, -1, 1, -1, 1]
+//        [-1000, 1000]
+//        [5]
+//        []
